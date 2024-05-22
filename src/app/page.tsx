@@ -2,24 +2,29 @@ import { Card } from "flowbite-react";
 import Image from "next/image";
 
 export default async function Home() {
-  const data = [
-    {
-      id: 1,
-      name: "Abyssinian",
-      url: "https://cdn2.thecatapi.com/images/776.jpg",
-    },
-    { id: 2, name: "Bombay", url: "https://cdn2.thecatapi.com/images/9uh.jpg" },
-    {
-      id: 3,
-      name: "Cheetoh",
-      url: "https://cdn2.thecatapi.com/images/9cbCzlbJt.jpg",
-    },
-    {
-      id: 4,
-      name: "Donskoy",
-      url: "https://cdn2.thecatapi.com/images/cvi.jpg",
-    },
-  ];
+  let getData = async () => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api`);
+    return res.json();
+  };
+  const { data } = await getData();
+  // const data = [
+  //   {
+  //     id: 1,
+  //     name: "Abyssinian",
+  //     url: "https://cdn2.thecatapi.com/images/776.jpg",
+  //   },
+  //   { id: 2, name: "Bombay", url: "https://cdn2.thecatapi.com/images/9uh.jpg" },
+  //   {
+  //     id: 3,
+  //     name: "Cheetoh",
+  //     url: "https://cdn2.thecatapi.com/images/9cbCzlbJt.jpg",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Donskoy",
+  //     url: "https://cdn2.thecatapi.com/images/cvi.jpg",
+  //   },
+  // ];
   return (
     <>
       <div className="w-full mt-2">
