@@ -1,17 +1,25 @@
-export const dynamic = "force-dynamic";
 import { Card } from "flowbite-react";
 import Image from "next/image";
 
-async function getData() {
-  const apiURL = process.env.NEXT_PUBLIC_API_URL;
-  const data = await fetch(apiURL + "/api/cats", {
-    cache: "no-store",
-  }).then((res) => res.json());
-  return data;
-}
-
 export default async function Home() {
-  const { data } = await getData();
+  const data = [
+    {
+      id: 1,
+      name: "Abyssinian",
+      url: "https://cdn2.thecatapi.com/images/776.jpg",
+    },
+    { id: 2, name: "Bombay", url: "https://cdn2.thecatapi.com/images/9uh.jpg" },
+    {
+      id: 3,
+      name: "Cheetoh",
+      url: "https://cdn2.thecatapi.com/images/9cbCzlbJt.jpg",
+    },
+    {
+      id: 4,
+      name: "Donskoy",
+      url: "https://cdn2.thecatapi.com/images/cvi.jpg",
+    },
+  ];
   return (
     <>
       <div className="w-full mt-2">
