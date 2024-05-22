@@ -4,7 +4,7 @@ import Image from "next/image";
 async function getData() {
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const data = await fetch(apiURL + "/api/cats", {
-    cache: "no-cache",
+    cache: "no-store",
   }).then((res) => res.json());
   return data;
 }
