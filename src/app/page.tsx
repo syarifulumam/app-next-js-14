@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { Card } from "flowbite-react";
 import Image from "next/image";
 
