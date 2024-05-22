@@ -4,7 +4,7 @@ import Image from "next/image";
 const getData = async () => {
   try {
     const apiURL = process.env.NEXT_PUBLIC_API_URL;
-    const respownse = await fetch(`${apiURL}/api`);
+    const respownse = await fetch(apiURL + "/api/cats");
     return respownse.json();
   } catch (error) {
     console.log(error);
