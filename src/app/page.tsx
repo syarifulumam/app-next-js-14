@@ -2,12 +2,12 @@ import { Card } from "flowbite-react";
 import Image from "next/image";
 
 export default async function Home() {
-  let getData = async () => {
-    const apiURL = process.env.NEXT_PUBLIC_API_URL;
-    const res = await fetch(apiURL + "/api");
-    return res.json();
-  };
-  const { data } = await getData();
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(apiURL + "/api");
+  if (!res.ok) {
+    throw new Error("Couldn't fetch");
+  }
+  const { data } = await res.json();
   // const data = [
   //   {
   //     id: 1,
