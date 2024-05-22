@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default async function Home() {
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(apiURL + "/api");
+  const res = await fetch(`${apiURL}/api`);
   if (!res.ok) {
     throw new Error("Couldn't fetch");
   }
