@@ -3,7 +3,8 @@ import Image from "next/image";
 
 const getData = async () => {
   try {
-    const respownse = await fetch("http://localhost:3000/api");
+    const apiURL = process.env.NEXT_PUBLIC_API_URL;
+    const respownse = await fetch(`${apiURL}/api`);
     return respownse.json();
   } catch (error) {
     console.log(error);
