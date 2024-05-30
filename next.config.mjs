@@ -4,9 +4,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn2.thecatapi.com",
+        hostname: "pub-460ada4f152c4135a7ec0881a2cb1330.r2.dev",
         port: "",
-        pathname: "/images/**",
       },
     ],
   },

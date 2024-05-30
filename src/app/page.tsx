@@ -1,46 +1,41 @@
 import { Card } from "flowbite-react";
 import Image from "next/image";
+import Link from "next/link";
 
-export default async function Home() {
-  const apiURL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${apiURL}/api`);
-  if (!res.ok) {
+const getData = async () => {
+  try {
+    const res = await fetch(`https://pokeapi.deno.dev/pokemon?limit=20`);
+    return res.json();
+  } catch (error) {
     throw new Error("Couldn't fetch");
   }
-  const { data } = await res.json();
-  // const data = [
-  //   {
-  //     id: 1,
-  //     name: "Abyssinian",
-  //     url: "https://cdn2.thecatapi.com/images/776.jpg",
-  //   },
-  //   { id: 2, name: "Bombay", url: "https://cdn2.thecatapi.com/images/9uh.jpg" },
-  //   {
-  //     id: 3,
-  //     name: "Cheetoh",
-  //     url: "https://cdn2.thecatapi.com/images/9cbCzlbJt.jpg",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Donskoy",
-  //     url: "https://cdn2.thecatapi.com/images/cvi.jpg",
-  //   },
-  // ];
+};
+
+export default async function Home() {
+  const data = await getData();
+
   return (
     <>
       <div className="w-full mt-2">
-        <div className="container max-w-6xl mx-auto flex gap-3">
+        <div className="container max-w-6xl mx-auto flex flex-wrap gap-3">
           {data.map((item: any) => (
-            <Card
-              key={item.id}
-              className="max-w-sm"
-              imgAlt="Meaningful alt text for an image that is not purely decorative"
-            >
-              <Image src={item.url} alt={item.name} width={200} height={200} />
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {item.name}
-              </h5>
-            </Card>
+            <Link href={`/pokemon/${item.id}`}>
+              <Card
+                key={item.id}
+                className="max-w-sm"
+                imgAlt="Meaningful alt text for an image that is not purely decorative"
+              >
+                <Image
+                  src={item.imageUrl}
+                  alt={item.name}
+                  width={200}
+                  height={200}
+                />
+                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {item.name}
+                </h5>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>
