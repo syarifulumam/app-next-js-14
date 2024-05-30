@@ -19,9 +19,8 @@ export default async function Home() {
       <div className="w-full mt-2">
         <div className="container max-w-6xl mx-auto flex flex-wrap gap-3">
           {data.map((item: any) => (
-            <Link href={`/pokemon/${item.id}`}>
+            <Link key={item.id} href={`/pokemon/${item.id}`}>
               <Card
-                key={item.id}
                 className="max-w-sm"
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
               >
